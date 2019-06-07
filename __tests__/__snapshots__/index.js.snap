@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should transform markdown as json 1`] = `
+Object {
+  "body": Object {
+    "c": Array [
+      Object {
+        "c": Array [
+          Object {
+            "c": Array [
+              Object {
+                "p": Object {
+                  "class": "icon icon-link",
+                },
+                "t": "span",
+              },
+            ],
+            "p": Object {
+              "aria-hidden": "true",
+              "href": "#test",
+            },
+            "t": "a",
+          },
+          "Test",
+        ],
+        "p": Object {
+          "id": "test",
+        },
+        "t": "h2",
+      },
+      "
+",
+      Object {
+        "c": Array [
+          Object {
+            "c": Array [
+              "link",
+            ],
+            "p": Object {
+              "href": "href",
+            },
+            "t": "a",
+          },
+        ],
+        "t": "p",
+      },
+      "
+",
+      Object {
+        "c": Array [
+          Object {
+            "c": Array [
+              Object {
+                "c": Array [
+                  "console",
+                ],
+                "p": Object {
+                  "class": "hljs-built_in",
+                },
+                "t": "span",
+              },
+              ".log(",
+              Object {
+                "c": Array [
+                  "window",
+                ],
+                "p": Object {
+                  "class": "hljs-built_in",
+                },
+                "t": "span",
+              },
+              ")",
+            ],
+            "p": Object {
+              "class": "hljs language-js",
+            },
+            "t": "code",
+          },
+        ],
+        "t": "pre",
+      },
+    ],
+    "t": "div",
+  },
+  "headings": Array [
+    Object {
+      "id": "test",
+      "level": 2,
+      "text": "Test",
+    },
+  ],
+  "test": "a",
+  "test2": "b",
+}
+`;
