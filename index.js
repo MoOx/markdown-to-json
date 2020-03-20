@@ -3,6 +3,26 @@
 const frontMatterParser = require("gray-matter");
 const unified = require("unified");
 
+
+const defaultRemarkPlugins = [
+  [require("remark-toc"), {}],
+  //
+  // List of language Here
+  // https://github.com/atom/highlights/tree/master/deps
+  // if language is not in the list, use `additionalLangs: ["language-{yourlanguage}"]`
+  // and add this package (`language-{yourlanguage}`) to your node_modules
+  //
+  // To generated a CSS theme,
+  // https://github.com/MoOx/atom-syntax-theme-to-highlights-css
+  //
+  [require("remark-highlight.js"), {}],
+];
+
+const defaultRehypePlugins = [
+  [require("rehype-slug"), {}],
+  [require("rehype-autolink-headings"), {}],
+];
+
 /*::
 type mdNode =
   | string
@@ -84,25 +104,10 @@ const getOnlyChildren = (ast /*: mdNode */) => {
   return ast;
 }
 
-module.exports = (
+const markdownAsJsTree = (
   contents /*: string */,
-  remarkPlugins/*: plugins */ = [
-    [require("remark-toc"), {}],
-    //
-    // List of language Here
-    // https://github.com/atom/highlights/tree/master/deps
-    // if language is not in the list, use `additionalLangs: ["language-{yourlanguage}"]`
-    // and add this package (`language-{yourlanguage}`) to your node_modules
-    //
-    // To generated a CSS theme,
-    // https://github.com/MoOx/atom-syntax-theme-to-highlights-css
-    //
-    [require("remark-highlight.js"), {}],
-  ],
-  rehypePlugins/*: plugins */ = [
-    [require("rehype-slug"), {}],
-    [require("rehype-autolink-headings"), {}],
-  ],
+  remarkPlugins/*: plugins */ = defaultRemarkPlugins,
+  rehypePlugins/*: plugins */ = defaultRehypePlugins,
 ) => {
   const front = frontMatterParser(contents.toString());
 
@@ -148,3 +153,9 @@ module.exports = (
   }
   throw new Error("unified processSync didn't return an object.");
 };
+
+module.exports = {
+  defaultRemarkPlugins,
+  defaultRehypePlugins,
+  markdownAsJsTree,
+}

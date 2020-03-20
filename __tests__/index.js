@@ -1,10 +1,10 @@
 // @flow
 
-const markdownAsJson = require("../index.js");
+const markdownAsJsTree = require("../index.js").markdownAsJsTree;
 
 it("should transform markdown as json", () => {
   expect(
-    markdownAsJson(
+    markdownAsJsTree(
       `---
 test: a
 test2: b
