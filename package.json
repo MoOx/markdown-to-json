@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "name": "@phenomic/markdown-as-json",
+  "name": "markdown-as-json",
   "publishConfig": {
     "access": "public"
   },
@@ -16,8 +16,8 @@
   "authors": [
     "Maxime Thirouin (MoOx)"
   ],
-  "repository": "https://github.com/phenomic/markdown-as-json.git",
-  "homepage": "https://github.com/phenomic/markdown-as-json",
+  "repository": "https://github.com/MoOx/markdown-as-json.git",
+  "homepage": "https://github.com/MoOx/markdown-as-json",
   "scripts": {
     "test": "flow && jest --no-watchman __tests__/*.js"
   },
