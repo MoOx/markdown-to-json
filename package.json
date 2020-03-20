@@ -36,7 +36,25 @@
   },
   "devDependencies": {
     "flow-bin": "^0.121.0",
+    "husky": "^4.0.0",
     "jest": "^25.0.0",
-    "npmpub": "^5.0.0"
+    "lint-staged": "^10.0.0",
+    "npmpub": "^5.0.0",
+    "prettier": "^1.19.0"
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "proseWrap": "always"
+  },
+  "lint-staged": {
+    "*.{md,json,js,css}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
