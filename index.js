@@ -28,11 +28,11 @@ type mdNode =
   | string
   | {|
       tag?: string,
-      props?: Object,
+      props?: {[key: string]: string},
       children?: mdNode | $ReadOnlyArray<mdNode>,
     |};
 
-type plugin = [Function, Object];
+type plugin = [() => void, {[key: string]: {}}];
 type plugins = $ReadOnlyArray<plugin>;
 
 type heading ={| level: number, text: string, id: string |};
@@ -52,7 +52,7 @@ const renderText = (node /*: void | mdNode */) /*: string */ => {
 };
 
 const getHeadings = (node /*: void | mdNode */) /*: $ReadOnlyArray<heading>*/ => {
-  if (node) {
+  if (node != undefined) {
     if (typeof node === "string") {
       return [];
     }
@@ -94,10 +94,10 @@ const getOnlyChildren = (ast /*: mdNode */) => {
   // lets try to remove it
   if (
     ast.tag ==="div" &&
-    ast.children &&
+    ast.children != undefined &&
     Array.isArray(ast.children) &&
     ast.children.length === 1 &&
-    ast.children[0]
+    ast.children[0] != undefined
   ) {
     return ast.children[0]
   }
@@ -137,9 +137,9 @@ const markdownAsJsTree = (
   const processed = processor.processSync(front.content);
   
   if (
-    processed &&
+    processed != undefined &&
     typeof processed === "object" &&
-    processed.contents && 
+    processed.contents != undefined && 
     typeof processed.contents === "object"
   ) {
     // $FlowFixMe rehype-react should handle this

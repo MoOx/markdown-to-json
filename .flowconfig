@@ -1,12 +1,6 @@
 [version]
-^0.100.0
+^0.121.0
 
-[ignore]
-.*/__tests__/.*
+[lints]
+all=error
 
-[strict]
-nonstrict-import
-unclear-type
-unsafe-getters-setters
-untyped-import
-untyped-type-import

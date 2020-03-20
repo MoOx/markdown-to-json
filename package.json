@@ -35,7 +35,7 @@
     "unified": "^8.0.0"
   },
   "devDependencies": {
-    "flow-bin": "^0.100.0",
+    "flow-bin": "^0.121.0",
     "jest": "^25.0.0",
     "npmpub": "^5.0.0"
   }
