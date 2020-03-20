@@ -32,7 +32,7 @@ it("should give fallback to md title", () => {
 
 it("should works for files", done => {
   const sourcePath = require("path").join(__dirname, "*.md");
-  mdjsfs.globMarkdownAsJson(sourcePath, undefined, () => {
+  mdjsfs.globMarkdownToJson(sourcePath, undefined, () => {
     const testJson = require("fs")
       .readFileSync(require("path").join(__dirname, "test.json"))
       .toString();

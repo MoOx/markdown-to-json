@@ -1,10 +1,10 @@
-# markdown-as-json
+# markdown-to-json
 
-[![Build Status](https://github.com/MoOx/markdown-as-json/workflows/Build/badge.svg)](https://github.com/MoOx/markdown-as-json/actions)
-[![Version](https://img.shields.io/npm/v/markdown-as-json.svg)](https://www.npmjs.com/package/markdown-as-json)
+[![Build Status](https://github.com/MoOx/markdown-to-json/workflows/Build/badge.svg)](https://github.com/MoOx/markdown-to-json/actions)
+[![Version](https://img.shields.io/npm/v/markdown-to-json.svg)](https://www.npmjs.com/package/markdown-to-json)
 
-[![Repo on GitHub](https://img.shields.io/badge/repo-GitHub-3D76C2.svg)](https://github.com/MoOx/markdown-as-json)
-[![Repo on GitLab](https://img.shields.io/badge/repo-GitLab-6C488A.svg)](https://gitlab.com/MoOx/markdown-as-json)
+[![Repo on GitHub](https://img.shields.io/badge/repo-GitHub-3D76C2.svg)](https://github.com/MoOx/markdown-to-json)
+[![Repo on GitLab](https://img.shields.io/badge/repo-GitLab-6C488A.svg)](https://gitlab.com/MoOx/markdown-to-json)
 
 > Transform markdown content as a JSON
 
@@ -20,13 +20,13 @@ It is meant to be used before runtime:
 ## Installation
 
 ```console
-npm install markdown-as-json
+npm install markdown-to-json
 ```
 
 or
 
 ```console
-yarn add markdown-as-json
+yarn add markdown-to-json
 ```
 
 ## Usage
@@ -34,19 +34,19 @@ yarn add markdown-as-json
 ### CLI
 
 ```console
-npx markdown-as-json docs/**/*.md [optional output-folder]
+npx markdown-to-json docs/**/*.md [optional output-folder]
 ```
 
 or
 
 ```console
-yarn markdown-as-json docs/**/*.md [optional output-folder]
+yarn markdown-to-json docs/**/*.md [optional output-folder]
 ```
 
 ### Node.js
 
 ```js
-const mdjs = require("markdown-as-json");
+const mdjs = require("markdown-to-json");
 const output = mdjs.markdownAsJsTree("# markdown string");
 ```
 
@@ -115,7 +115,7 @@ that should returns an array of plugin with there options:
 The first example is equivalent to
 
 ```js
-const mdjs = require("markdown-as-json");
+const mdjs = require("markdown-to-json");
 const output = mdjs.markdownAsJsTree(
   "# markdown string",
   mdjs.defaultRemarkPlugins
@@ -127,7 +127,7 @@ By default sending arguments will override [default plugins](./index.js). You
 can get the default one by doing something like this
 
 ```js
-const mdjs = require("markdown-as-json");
+const mdjs = require("markdown-to-json");
 const output = mdjs.markdownAsJsTree(
   "# markdown string",
   () => ([

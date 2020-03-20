@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "name": "markdown-as-json",
+  "name": "markdown-to-json",
   "publishConfig": {
     "access": "public"
   },
@@ -19,13 +19,13 @@
   "authors": [
     "Maxime Thirouin (MoOx)"
   ],
-  "repository": "https://github.com/MoOx/markdown-as-json.git",
-  "homepage": "https://github.com/MoOx/markdown-as-json",
+  "repository": "https://github.com/MoOx/markdown-to-json.git",
+  "homepage": "https://github.com/MoOx/markdown-to-json",
   "scripts": {
     "test": "flow && jest --no-watchman __tests__/*.js"
   },
   "bin": {
-    "markdown-as-json": "./cli.js"
+    "markdown-to-json": "./cli.js"
   },
   "dependencies": {
     "glob": "^7.0.0",

@@ -8,7 +8,7 @@ const glob = require("glob");
 const mdjs = require("./index.js");
 
 module.exports = {
-  globMarkdownAsJson: (
+  globMarkdownToJson: (
     sourcePath /*: string*/,
     outputPath /*: string*/ = process.cwd(),
     done /*: ($ReadOnlyArray<string>) => void*/,

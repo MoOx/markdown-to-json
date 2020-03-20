@@ -9,6 +9,6 @@ args.shift(); // bin name
 const sourcePath = args.shift();
 const outputPath = args.shift();
 
-mdjsfs.globMarkdownAsJson(sourcePath, outputPath, files => {
+mdjsfs.globMarkdownToJson(sourcePath, outputPath, files => {
   console.log(files.length + " transformed as JSON");
 });
