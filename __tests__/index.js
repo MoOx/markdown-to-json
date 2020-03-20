@@ -2,7 +2,7 @@
 
 const markdownAsJsTree = require("../index.js").markdownAsJsTree;
 
-it("should transform markdown as json", () => {
+it("should transform markdown as js", () => {
   expect(
     markdownAsJsTree(
       `---
@@ -13,3 +13,23 @@ test2: b
     )
   ).toMatchSnapshot();
 });
+
+it("should give front title", () => {
+  expect(
+    markdownAsJsTree(
+      `---
+title: Title front
+---
+` + "# Title md"
+    )
+  ).toMatchSnapshot();
+});
+
+it("should give fallback to md title", () => {
+  expect(
+    markdownAsJsTree(
+      "# Title md"
+    )
+  ).toMatchSnapshot();
+});
+

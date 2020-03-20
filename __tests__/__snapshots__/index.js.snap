@@ -1,6 +1,82 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should transform markdown as json 1`] = `
+exports[`should give fallback to md title 1`] = `
+Object {
+  "body": Object {
+    "children": Array [
+      Object {
+        "children": Array [
+          Object {
+            "children": undefined,
+            "props": Object {
+              "class": "icon icon-link",
+            },
+            "tag": "span",
+          },
+        ],
+        "props": Object {
+          "aria-hidden": "true",
+          "href": "#title-md",
+        },
+        "tag": "a",
+      },
+      "Title md",
+    ],
+    "props": Object {
+      "id": "title-md",
+    },
+    "tag": "h1",
+  },
+  "headings": Array [
+    Object {
+      "id": "title-md",
+      "level": 1,
+      "text": "Title md",
+    },
+  ],
+  "title": "Title md",
+}
+`;
+
+exports[`should give front title 1`] = `
+Object {
+  "body": Object {
+    "children": Array [
+      Object {
+        "children": Array [
+          Object {
+            "children": undefined,
+            "props": Object {
+              "class": "icon icon-link",
+            },
+            "tag": "span",
+          },
+        ],
+        "props": Object {
+          "aria-hidden": "true",
+          "href": "#title-md",
+        },
+        "tag": "a",
+      },
+      "Title md",
+    ],
+    "props": Object {
+      "id": "title-md",
+    },
+    "tag": "h1",
+  },
+  "headings": Array [
+    Object {
+      "id": "title-md",
+      "level": 1,
+      "text": "Title md",
+    },
+  ],
+  "title": "Title front",
+}
+`;
+
+exports[`should transform markdown as js 1`] = `
 Object {
   "body": Object {
     "children": Array [
