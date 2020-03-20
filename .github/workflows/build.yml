@@ -1,0 +1,13 @@
+name: Build
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: node:lts
+    steps:
+      - uses: actions/checkout@v2
+      - run: yarn install --non-interactive --frozen-lockfile
+      - run: yarn test
+        env:
+          CI: true
