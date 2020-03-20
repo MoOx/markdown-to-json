@@ -95,5 +95,6 @@ Object {
   ],
   "test": "a",
   "test2": "b",
+  "title": undefined,
 }
 `;

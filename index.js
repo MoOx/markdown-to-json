@@ -63,11 +63,10 @@ const getHeadings = (node /*: void | mdNode */) /*: $ReadOnlyArray<heading>*/ =>
 const extractMetaFromBodyNode = (node /*: mdNode*/) /*: meta */ => {
   const headings = getHeadings(node);
   const firstH1 = headings.find(h => h.level === 1);
-  // $FlowFixMe lazy me
-  return Object.assign(
-    firstH1 ? { title: firstH1.text } : {},
-    headings.length > 0 ? { headings } : {}
-  );
+  return {
+    title: firstH1 ? firstH1.text : undefined,
+    headings,
+  };
 };
 
 const getOnlyChildren = (ast /*: mdNode */) => {
