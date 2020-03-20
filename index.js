@@ -4,7 +4,7 @@ const frontMatterParser = require("gray-matter");
 const unified = require("unified");
 
 
-const defaultRemarkPlugins = [
+const defaultRemarkPlugins = () => [
   [require("remark-toc"), {}],
   //
   // List of language Here
@@ -18,7 +18,7 @@ const defaultRemarkPlugins = [
   [require("remark-highlight.js"), {}],
 ];
 
-const defaultRehypePlugins = [
+const defaultRehypePlugins = () => [
   [require("rehype-slug"), {}],
   [require("rehype-autolink-headings"), {}],
 ];
@@ -106,19 +106,19 @@ const getOnlyChildren = (ast /*: mdNode */) => {
 
 const markdownAsJsTree = (
   contents /*: string */,
-  remarkPlugins/*: plugins */ = defaultRemarkPlugins,
-  rehypePlugins/*: plugins */ = defaultRehypePlugins,
+  remarkPlugins/*: () => plugins */ = defaultRemarkPlugins,
+  rehypePlugins/*: () => plugins */ = defaultRehypePlugins,
 ) => {
   const front = frontMatterParser(contents.toString());
 
   const processor = unified();
   processor.use(require("remark-parse"));
-  remarkPlugins.forEach(plugin => processor.use(plugin[0], plugin[1]));
+  remarkPlugins().forEach(plugin => processor.use(plugin[0], plugin[1]));
   // markdown to html ast
   // this is to allow "raw" things (html in md and md in html)
   processor.use(require("remark-rehype"), { allowDangerousHTML: true });
   processor.use(require("rehype-raw"));
-  rehypePlugins.forEach(plugin => processor.use(plugin[0], plugin[1]));
+  rehypePlugins().forEach(plugin => processor.use(plugin[0], plugin[1]));
   processor.use(
     require("rehype-react"),
     {
