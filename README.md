@@ -1,13 +1,14 @@
 # markdown-as-json
 
 [![Build Status](https://github.com/MoOx/markdown-as-json/workflows/Build/badge.svg)](https://github.com/MoOx/markdown-as-json/actions)
+[![Version](https://img.shields.io/npm/v/markdown-as-json.svg)](https://www.npmjs.com/package/markdown-as-json)
 
 [![Repo on GitHub](https://img.shields.io/badge/repo-GitHub-3D76C2.svg)](https://github.com/MoOx/markdown-as-json)
 [![Repo on GitLab](https://img.shields.io/badge/repo-GitLab-6C488A.svg)](https://gitlab.com/MoOx/markdown-as-json)
 
 > Transform markdown content as a JSON
 
-Handles:
+By default, it handles:
 
 - front-matter (via gray-matter)
 - auto slug for headings (with anchors)
@@ -33,7 +34,7 @@ console.log(window);
 
 like
 
-```json
+```js
 {
   "test": "a",
   "test2": "b",
@@ -41,94 +42,30 @@ like
     {
       "id": "test",
       "level": 2,
-      "text": "Test",
-    },
+      "text": "Test"
+    }
   ],
   "body": {
-    "c": [
+    "tag": "div",
+    "children": [
       {
-        "c": [
-          {
-            "c": [
-              {
-                "p": {
-                  "class": "icon icon-link",
-                },
-                "t": "span",
-              },
-            ],
-            "p": {
-              "aria-hidden": "true",
-              "href": "#test",
-            },
-            "t": "a",
-          },
-          "Test",
-        ],
-        "p": {
-          "id": "test",
+        "tag": "h2",
+        "props": {
+          "id": "test"
         },
-        "t": "h2",
-      },
-      "
-",
-      {
-        "c": [
-          {
-            "c": [
-              "link",
-            ],
-            "p": {
-              "href": "href",
-            },
-            "t": "a",
-          },
-        ],
-        "t": "p",
-      },
-      "
-",
-      {
-        "c": [
-          {
-            "c": [
-              {
-                "c": [
-                  "console",
-                ],
-                "p": {
-                  "class": "hljs-built_in",
-                },
-                "t": "span",
-              },
-              ".log(",
-              {
-                "c": [
-                  "window",
-                ],
-                "p": {
-                  "class": "hljs-built_in",
-                },
-                "t": "span",
-              },
-              ")",
-            ],
-            "p": {
-              "class": "hljs language-js",
-            },
-            "t": "code",
-          },
-        ],
-        "t": "pre",
-      },
-    ],
-    "t": "div",
-  },
+        "children": [
+          //...
+        ]
+      }
+    ]
+  }
 }
 ```
 
 For easy rendering to dom (eg: React etc).
 
-[Check out input](__tests__/index.js) & [output](__tests__/__snapshots__/index.js.snap) to get an idea of what to expect from this package.
+[Check out input](__tests__/index.js) &
+[output](__tests__/__snapshots__/index.js.snap) to get an idea of what to expect
+from this package.
 
 [LICENSE](LICENSE)
