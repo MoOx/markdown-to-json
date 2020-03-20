@@ -7,9 +7,9 @@ const unified = require("unified");
 type mdNode =
   | string
   | {|
-      t?: string,
-      p?: Object,
-      c?: mdNode | $ReadOnlyArray<mdNode>,
+      tag?: string,
+      props?: Object,
+      children?: mdNode | $ReadOnlyArray<mdNode>,
     |};
 
 type plugin = [Function, Object];
@@ -25,9 +25,9 @@ type meta = {|
 const renderText = (node /*: void | mdNode */) /*: string */ => {
   if (typeof node === "string") return node;
   if (typeof node === "object")
-    return Array.isArray(node.c)
-      ? node.c.map((child /*: mdNode */) => renderText(child)).join("")
-      : renderText(node.c);
+    return Array.isArray(node.children)
+      ? node.children.map((child /*: mdNode */) => renderText(child)).join("")
+      : renderText(node.children);
   return "";
 };
 
@@ -36,25 +36,25 @@ const getHeadings = (node /*: void | mdNode */) /*: $ReadOnlyArray<heading>*/ =>
     if (typeof node === "string") {
       return [];
     }
-    if (typeof node.t === "string") {
-      const tag = node.t;
+    if (typeof node.tag === "string") {
+      const tag = node.tag;
       const level = parseInt(tag[1], 10);
       if (tag[0] === "h" && !isNaN(level)) {
         return [
           {
             level,
             text: renderText(node),
-            id: node.p && node.p.id ? String(node.p.id) : ""
+            id: node.props && node.props.id ? String(node.props.id) : ""
           }
         ];
       }
     }
-    return (Array.isArray(node.c)
-      ? node.c.reduce(
+    return (Array.isArray(node.children)
+      ? node.children.reduce(
           (acc, child /*: mdNode*/) => acc.concat(getHeadings(child)),
           []
         )
-      : getHeadings(node.c)
+      : getHeadings(node.children)
     ).filter(h => h);
   }
   return [];
@@ -74,13 +74,13 @@ const getOnlyChildren = (ast /*: mdNode */) => {
   // rehype-react add an outer div by default
   // lets try to remove it
   if (
-    ast.t ==="div" &&
-    ast.c &&
-    Array.isArray(ast.c) &&
-    ast.c.length === 1 &&
-    ast.c[0]
+    ast.tag ==="div" &&
+    ast.children &&
+    Array.isArray(ast.children) &&
+    ast.children.length === 1 &&
+    ast.children[0]
   ) {
-    return ast.c[0]
+    return ast.children[0]
   }
   return ast;
 }
@@ -122,9 +122,9 @@ module.exports = (
       // here we optimize structure just a little to have to smallest json possible
       (component, props, children) /*: mdNode */ => {
         return {
-          t: component,
-          p: props && Object.keys(props).length ? props : undefined,
-          c: children ? children : undefined,
+          tag: component,
+          props: props && Object.keys(props).length ? props : undefined,
+          children,
         };
       }
     }

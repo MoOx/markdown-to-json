@@ -3,88 +3,88 @@
 exports[`should transform markdown as json 1`] = `
 Object {
   "body": Object {
-    "c": Array [
+    "children": Array [
       Object {
-        "c": Array [
+        "children": Array [
           Object {
-            "c": Array [
+            "children": Array [
               Object {
-                "c": undefined,
-                "p": Object {
+                "children": undefined,
+                "props": Object {
                   "class": "icon icon-link",
                 },
-                "t": "span",
+                "tag": "span",
               },
             ],
-            "p": Object {
+            "props": Object {
               "aria-hidden": "true",
               "href": "#test",
             },
-            "t": "a",
+            "tag": "a",
           },
           "Test",
         ],
-        "p": Object {
+        "props": Object {
           "id": "test",
         },
-        "t": "h2",
+        "tag": "h2",
       },
       "
 ",
       Object {
-        "c": Array [
+        "children": Array [
           Object {
-            "c": Array [
+            "children": Array [
               "link",
             ],
-            "p": Object {
+            "props": Object {
               "href": "href",
             },
-            "t": "a",
+            "tag": "a",
           },
         ],
-        "p": undefined,
-        "t": "p",
+        "props": undefined,
+        "tag": "p",
       },
       "
 ",
       Object {
-        "c": Array [
+        "children": Array [
           Object {
-            "c": Array [
+            "children": Array [
               Object {
-                "c": Array [
+                "children": Array [
                   "console",
                 ],
-                "p": Object {
+                "props": Object {
                   "class": "hljs-built_in",
                 },
-                "t": "span",
+                "tag": "span",
               },
               ".log(",
               Object {
-                "c": Array [
+                "children": Array [
                   "window",
                 ],
-                "p": Object {
+                "props": Object {
                   "class": "hljs-built_in",
                 },
-                "t": "span",
+                "tag": "span",
               },
               ")",
             ],
-            "p": Object {
+            "props": Object {
               "class": "hljs language-js",
             },
-            "t": "code",
+            "tag": "code",
           },
         ],
-        "p": undefined,
-        "t": "pre",
+        "props": undefined,
+        "tag": "pre",
       },
     ],
-    "p": undefined,
-    "t": "div",
+    "props": undefined,
+    "tag": "div",
   },
   "headings": Array [
     Object {
