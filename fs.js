@@ -36,7 +36,6 @@ module.exports = {
             outputPath,
             file.replace(root, "").replace(/\.[a-z]+$/, ".json"),
           );
-          console.log("newFile", newFile, path.dirname(newFile));
           fs.mkdirSync(path.dirname(newFile), { recursive: true });
           let result;
           try {
