@@ -109,6 +109,21 @@ const extractMetaFromBodyNode = (node /*: mdNode*/) /*: meta */ => {
   );
 };
 
+const getOnlyChildren = (ast /*: mdNode */) => {
+  // rehype-react add an outer div by default
+  // lets try to remove it
+  if (
+    ast.t ==="div" &&
+    ast.c &&
+    Array.isArray(ast.c) &&
+    ast.c.length === 1 &&
+    ast.c[0]
+  ) {
+    return ast.c[0]
+  }
+  return ast;
+}
+
 module.exports = (
   contents /*: string */,
   plugins /*: plugins*/ = defaultPlugins
@@ -119,8 +134,20 @@ module.exports = (
   plugins.forEach(plugin => processor.use(plugin[0], plugin[1]));
 
   const processed = processor.processSync(front.content);
-  // $FlowFixMe lazy me
-  const body /*: string */ = processed.contents || "";
-
-  return Object.assign(extractMetaFromBodyNode(body), front.data, { body });
+  if (
+    processed &&
+    typeof processed === "object" &&
+    processed.contents && 
+    typeof processed.contents === "object"
+  ) {
+    // $FlowFixMe rehype-react should handle this
+    const body /* :mdNode */ = processed.contents;
+    return Object.assign(
+      extractMetaFromBodyNode(body),
+      front.data,
+      {
+        body: getOnlyChildren(body)
+      });
+  }
+  throw new Error("unified processSync didn't return an object.");
 };
