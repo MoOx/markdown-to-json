@@ -9,6 +9,7 @@ Object {
           Object {
             "c": Array [
               Object {
+                "c": undefined,
                 "p": Object {
                   "class": "icon icon-link",
                 },
@@ -42,6 +43,7 @@ Object {
             "t": "a",
           },
         ],
+        "p": undefined,
         "t": "p",
       },
       "
@@ -77,9 +79,11 @@ Object {
             "t": "code",
           },
         ],
+        "p": undefined,
         "t": "pre",
       },
     ],
+    "p": undefined,
     "t": "div",
   },
   "headings": Array [
