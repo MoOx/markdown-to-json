@@ -8,9 +8,12 @@
   "keywords": [
     "markdown",
     "json",
+    "unified",
     "remark",
     "rehype",
-    "react"
+    "react",
+    "react-native",
+    "md"
   ],
   "license": "MIT",
   "authors": [
@@ -21,7 +24,11 @@
   "scripts": {
     "test": "flow && jest --no-watchman __tests__/*.js"
   },
+  "bin": {
+    "markdown-as-json": "./cli.js"
+  },
   "dependencies": {
+    "glob": "^7.0.0",
     "gray-matter": "^4.0.0",
     "rehype-autolink-headings": "^3.0.0",
     "rehype-raw": "^4.0.0",

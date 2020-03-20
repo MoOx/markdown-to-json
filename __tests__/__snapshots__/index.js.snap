@@ -174,3 +174,61 @@ Object {
   "title": undefined,
 }
 `;
+
+exports[`should works for files 1`] = `
+Object {
+  "body": Object {
+    "children": Array [
+      Object {
+        "children": Array [
+          Object {
+            "children": Array [
+              Object {
+                "props": Object {
+                  "class": "icon icon-link",
+                },
+                "tag": "span",
+              },
+            ],
+            "props": Object {
+              "aria-hidden": "true",
+              "href": "#test",
+            },
+            "tag": "a",
+          },
+          "Test",
+        ],
+        "props": Object {
+          "id": "test",
+        },
+        "tag": "h2",
+      },
+      "
+",
+      Object {
+        "children": Array [
+          Object {
+            "children": Array [
+              "link",
+            ],
+            "props": Object {
+              "href": "url",
+            },
+            "tag": "a",
+          },
+        ],
+        "tag": "p",
+      },
+    ],
+    "tag": "div",
+  },
+  "headings": Array [
+    Object {
+      "id": "test",
+      "level": 2,
+      "text": "Test",
+    },
+  ],
+  "title": "test",
+}
+`;

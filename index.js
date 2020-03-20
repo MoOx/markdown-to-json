@@ -3,10 +3,9 @@
 const frontMatterParser = require("gray-matter");
 const unified = require("unified");
 
-
 const defaultRemarkPlugins = () => [
   [require("remark-toc"), {}],
-  //
+
   // List of language Here
   // https://github.com/atom/highlights/tree/master/deps
   // if language is not in the list, use `additionalLangs: ["language-{yourlanguage}"]`
@@ -40,6 +39,12 @@ type meta = {|
   title?: string,
   headings?: $ReadOnlyArray<heading>
 |};
+
+type result = {
+  title?: string,
+  headings?: $ReadOnlyArray<heading>,
+  body: mdNode,
+}
 */
 
 const renderText = (node /*: void | mdNode */) /*: string */ => {
@@ -51,7 +56,9 @@ const renderText = (node /*: void | mdNode */) /*: string */ => {
   return "";
 };
 
-const getHeadings = (node /*: void | mdNode */) /*: $ReadOnlyArray<heading>*/ => {
+const getHeadings = (
+  node /*: void | mdNode */,
+) /*: $ReadOnlyArray<heading>*/ => {
   if (node != undefined) {
     if (typeof node === "string") {
       return [];
@@ -64,15 +71,15 @@ const getHeadings = (node /*: void | mdNode */) /*: $ReadOnlyArray<heading>*/ =>
           {
             level,
             text: renderText(node),
-            id: node.props && node.props.id ? String(node.props.id) : ""
-          }
+            id: node.props && node.props.id ? String(node.props.id) : "",
+          },
         ];
       }
     }
     return (Array.isArray(node.children)
       ? node.children.reduce(
           (acc, child /*: mdNode*/) => acc.concat(getHeadings(child)),
-          []
+          [],
         )
       : getHeadings(node.children)
     ).filter(h => h);
@@ -93,22 +100,22 @@ const getOnlyChildren = (ast /*: mdNode */) => {
   // rehype-react add an outer div by default
   // lets try to remove it
   if (
-    ast.tag ==="div" &&
+    ast.tag === "div" &&
     ast.children != undefined &&
     Array.isArray(ast.children) &&
     ast.children.length === 1 &&
     ast.children[0] != undefined
   ) {
-    return ast.children[0]
+    return ast.children[0];
   }
   return ast;
-}
+};
 
 const markdownAsJsTree = (
   contents /*: string */,
-  remarkPlugins/*: () => plugins */ = defaultRemarkPlugins,
-  rehypePlugins/*: () => plugins */ = defaultRehypePlugins,
-) => {
+  remarkPlugins /*: () => plugins */ = defaultRemarkPlugins,
+  rehypePlugins /*: () => plugins */ = defaultRehypePlugins,
+) /* : result */ => {
   const front = frontMatterParser(contents.toString());
 
   const processor = unified();
@@ -119,10 +126,8 @@ const markdownAsJsTree = (
   processor.use(require("remark-rehype"), { allowDangerousHTML: true });
   processor.use(require("rehype-raw"));
   rehypePlugins().forEach(plugin => processor.use(plugin[0], plugin[1]));
-  processor.use(
-    require("rehype-react"),
-    {
-      createElement: 
+  processor.use(require("rehype-react"), {
+    createElement:
       // here we optimize structure just a little to have to smallest json possible
       (component, props, children) /*: mdNode */ => {
         return {
@@ -130,26 +135,22 @@ const markdownAsJsTree = (
           props: props && Object.keys(props).length ? props : undefined,
           children,
         };
-      }
-    }
-  );
-  
+      },
+  });
+
   const processed = processor.processSync(front.content);
-  
+
   if (
     processed != undefined &&
     typeof processed === "object" &&
-    processed.contents != undefined && 
+    processed.contents != undefined &&
     typeof processed.contents === "object"
   ) {
     // $FlowFixMe rehype-react should handle this
     const body /* :mdNode */ = processed.contents;
-    return Object.assign(
-      extractMetaFromBodyNode(body),
-      front.data,
-      {
-        body: getOnlyChildren(body)
-      });
+    return Object.assign(extractMetaFromBodyNode(body), front.data, {
+      body: getOnlyChildren(body),
+    });
   }
   throw new Error("unified processSync didn't return an object.");
 };
@@ -158,4 +159,4 @@ module.exports = {
   defaultRemarkPlugins,
   defaultRehypePlugins,
   markdownAsJsTree,
-}
+};
