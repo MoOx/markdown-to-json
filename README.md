@@ -1,10 +1,7 @@
-# markdown-to-json
+# @moox/markdown-to-json
 
 [![Build Status](https://github.com/MoOx/markdown-to-json/workflows/Build/badge.svg)](https://github.com/MoOx/markdown-to-json/actions)
 [![Version](https://img.shields.io/npm/v/@moox/markdown-to-json.svg)](https://www.npmjs.com/package/@moox/markdown-to-json)
-
-[![Repo on GitHub](https://img.shields.io/badge/repo-GitHub-3D76C2.svg)](https://github.com/MoOx/markdown-to-json)
-[![Repo on GitLab](https://img.shields.io/badge/repo-GitLab-6C488A.svg)](https://gitlab.com/MoOx/markdown-to-json)
 
 > Transform markdown content as a JSON
 
