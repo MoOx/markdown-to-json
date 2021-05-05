@@ -1,7 +1,7 @@
 # markdown-to-json
 
 [![Build Status](https://github.com/MoOx/markdown-to-json/workflows/Build/badge.svg)](https://github.com/MoOx/markdown-to-json/actions)
-[![Version](https://img.shields.io/npm/v/markdown-to-json.svg)](https://www.npmjs.com/package/markdown-to-json)
+[![Version](https://img.shields.io/npm/v/@moox/markdown-to-json.svg)](https://www.npmjs.com/package/@moox/markdown-to-json)
 
 [![Repo on GitHub](https://img.shields.io/badge/repo-GitHub-3D76C2.svg)](https://github.com/MoOx/markdown-to-json)
 [![Repo on GitLab](https://img.shields.io/badge/repo-GitLab-6C488A.svg)](https://gitlab.com/MoOx/markdown-to-json)
@@ -20,13 +20,13 @@ It is meant to be used before runtime:
 ## Installation
 
 ```console
-npm install markdown-to-json
+npm install @moox/markdown-to-json
 ```
 
 or
 
 ```console
-yarn add markdown-to-json
+yarn add @moox/markdown-to-json
 ```
 
 ## Usage
@@ -34,19 +34,21 @@ yarn add markdown-to-json
 ### CLI
 
 ```console
-npx markdown-to-json docs/**/*.md [optional output-folder]
+npx markdown-to-json "docs/**/*.md" [optional output-folder]
 ```
 
 or
 
 ```console
-yarn markdown-to-json docs/**/*.md [optional output-folder]
+yarn markdown-to-json "docs/**/*.md" [optional output-folder]
 ```
+
+⚠️ Be sure to put globs between quotes.
 
 ### Node.js
 
 ```js
-const mdjs = require("markdown-to-json");
+const mdjs = require("@moox/markdown-to-json");
 const output = mdjs.markdownAsJsTree("# markdown string");
 ```
 
@@ -115,7 +117,7 @@ that should returns an array of plugin with there options:
 The first example is equivalent to
 
 ```js
-const mdjs = require("markdown-to-json");
+const mdjs = require("@moox/markdown-to-json");
 const output = mdjs.markdownAsJsTree(
   "# markdown string",
   mdjs.defaultRemarkPlugins
@@ -127,7 +129,7 @@ By default sending arguments will override [default plugins](./index.js). You
 can get the default one by doing something like this
 
 ```js
-const mdjs = require("markdown-to-json");
+const mdjs = require("@moox/markdown-to-json");
 const output = mdjs.markdownAsJsTree(
   "# markdown string",
   () => ([

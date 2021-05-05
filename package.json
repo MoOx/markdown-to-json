@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "name": "markdown-to-json",
+  "name": "@moox/markdown-to-json",
   "publishConfig": {
     "access": "public"
   },
@@ -22,7 +22,8 @@
   "repository": "https://github.com/MoOx/markdown-to-json.git",
   "homepage": "https://github.com/MoOx/markdown-to-json",
   "scripts": {
-    "test": "flow && jest --no-watchman __tests__/*.js"
+    "test": "flow && jest --no-watchman __tests__/*.js",
+    "release": "npmpub"
   },
   "bin": {
     "markdown-to-json": "./cli.js"
