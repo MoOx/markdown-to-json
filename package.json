@@ -1,10 +1,10 @@
 {
-  "version": "1.0.0",
   "name": "@moox/markdown-to-json",
+  "description": "Transform markdown files as json files",
+  "version": "1.0.0",
   "publishConfig": {
     "access": "public"
   },
-  "description": "Transform markdown files as json files",
   "keywords": [
     "markdown",
     "json",
@@ -21,12 +21,15 @@
   ],
   "repository": "https://github.com/MoOx/markdown-to-json.git",
   "homepage": "https://github.com/MoOx/markdown-to-json",
+  "files": [
+    "*.js"
+  ],
+  "bin": {
+    "markdown-to-json": "./cli.js"
+  },
   "scripts": {
     "test": "flow && jest --no-watchman __tests__/*.js",
     "release": "npmpub"
-  },
-  "bin": {
-    "markdown-to-json": "./cli.js"
   },
   "dependencies": {
     "glob": "^7.0.0",
